@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your ReKindle Account</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 480px;
+            width: 100%;
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .header-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            font-size: 15px;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+        
+        .benefits-section {
+            background: #f8f9ff;
+            padding: 25px 30px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .benefits-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .benefits-list {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #333;
+        }
+        
+        .benefit-icon {
+            width: 28px;
+            height: 28px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .form-section {
+            padding: 35px 30px;
+        }
+        
+        .context-banner {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .context-icon {
+            font-size: 24px;
+        }
+        
+        .context-text {
+            flex: 1;
+        }
+        
+        .context-event {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 2px;
+        }
+        
+        .context-detail {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .input-group {
+            margin-bottom: 18px;
+        }
+        
+        .input-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .input-label .required {
+            color: #ff6b6b;
+        }
+        
+        .input-field {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .input-helper {
+            font-size: 12px;
+            color: #666;
+            margin-top: 6px;
+        }
+        
+        .interests-section {
+            margin-bottom: 18px;
+        }
+        
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .interest-chip {
+            padding: 10px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+            background: white;
+        }
+        
+        .interest-chip:hover {
+            border-color: #667eea;
+        }
+        
+        .interest-chip.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .terms-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            accent-color: #667eea;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .terms-text {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        .terms-text a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 25px 0;
+            color: #999;
+            font-size: 13px;
+        }
+        
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #e0e0e0;
+        }
+        
+        .divider span {
+            padding: 0 15px;
+        }
+        
+        .login-link {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .login-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .success-screen {
+            display: none;
+            padding: 50px 30px;
+            text-align: center;
+        }
+        
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            animation: successPop 0.6s ease;
+        }
+        
+        @keyframes successPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        
+        .success-text {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            padding: 14px 32px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.2s;
+        }
+        
+        .btn-secondary:hover {
+            background: #5568d3;
+            transform: translateY(-1px);
+        }
+        
+        .feature-cards {
+            display: grid;
+            gap: 12px;
+            margin-top: 25px;
+        }
+        
+        .feature-card {
+            background: #f9f9f9;
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: start;
+        }
+        
+        .feature-card-icon {
+            font-size: 24px;
+        }
+        
+        .feature-card-content {
+            flex: 1;
+        }
+        
+        .feature-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 4px;
+        }
+        
+        .feature-card-text {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🔥</div>
+            <h1 class="header-title">Welcome to ReKindle</h1>
+            <p class="header-subtitle">Turn event encounters into lasting connections</p>
+        </div>
+        
+        <div class="benefits-section">
+            <div class="benefits-title">✨ What you'll get with your account</div>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">⭐</div>
+                    <span>Privately mark people you meet at events</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🔔</div>
+                    <span>Get notified when there's a mutual connection</span>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon">🚀</div>
+                    <span>AI-powered reconnection prompts (Navigator)</span>
+                </div>
+            </div>
+        </div>
+        
+        <div id="formView" class="form-section">
+            <div class="context-banner">
+                <div class="context-icon">🎮</div>
+                <div class="context-text">
+                    <div class="context-event">You just checked into GameDev Mixer</div>
+                    <div class="context-detail">Create an account to connect with attendees</div>
+                </div>
+            </div>
+            
+            <form id="signupForm">
+                <div class="input-group">
+                    <label class="input-label">
+                        Full Name <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        class="input-field" 
+                        placeholder="e.g., Alex Chen" 
+                        required
+                        id="nameInput"
+                    >
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">
+                        Email Address <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        class="input-field" 
+                        placeholder="e.g., alex@example.com" 
+                        value="alex@example.com"
+                        required
+                        id="emailInput"
+                    >
+                    <div class="input-helper">We'll send you event updates and connection notifications</div>
+                </div>
+                
+                <div class="input-group">
+                    <label class="input-label">
+                        Password <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="password" 
+                        class="input-field" 
+                        placeholder="At least 8 characters" 
+                        required
+                        minlength="8"
+                        id="passwordInput"
+                    >
+                </div>
+                
+                <div class="interests-section">
+                    <label class="input-label">
+                        Your Interests (Select 3-5)
+                    </label>
+                    <div class="interests-grid" id="interestsGrid">
+                        <div class="interest-chip" data-interest="Game Dev">🎮 Game Dev</div>
+                        <div class="interest-chip" data-interest="Design">🎨 Design</div>
+                        <div class="interest-chip" data-interest="Music">🎵 Music</div>
+                        <div class="interest-chip" data-interest="Tech">💻 Tech</div>
+                        <div class="interest-chip" data-interest="Art">🖼️ Art</div>
+                        <div class="interest-chip" data-interest="Startups">🚀 Startups</div>
+                        <div class="interest-chip" data-interest="Sports">⚽ Sports</div>
+                        <div class="interest-chip" data-interest="Social">🎉 Social</div>
+                    </div>
+                    <div class="input-helper">This helps match you with relevant connections</div>
+                </div>
+                
+                <label class="terms-checkbox">
+                    <input type="checkbox" class="checkbox" required id="termsCheckbox">
+                    <span class="terms-text">
+                        I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>. 
+                        I understand that my stars are private until mutual.
+                    </span>
+                </label>
+                
+                <button type="submit" class="btn-primary" id="submitBtn">
+                    Create Account
+                </button>
+            </form>
+            
+            <div class="divider">
+                <span>or</span>
+            </div>
+            
+            <div class="login-link">
+                Already have an account? <a href="#">Log in</a>
+            </div>
+        </div>
+        
+        <div id="successView" class="success-screen">
+            <div class="success-icon">✓</div>
+            <h2 class="success-title">Account Created! 🎉</h2>
+            <p class="success-text">
+                Welcome to ReKindle, <span id="userName">Alex</span>! You can now privately mark people you meet at events and receive reconnection prompts.
+            </p>
+            
+            <a href="#" class="btn-secondary">Explore GameDev Mixer Attendees →</a>
+            
+            <div class="feature-cards">
+                <div class="feature-card">
+                    <div class="feature-card-icon">⭐</div>
+                    <div class="feature-card-content">
+                        <div class="feature-card-title">Star People Privately</div>
+                        <div class="feature-card-text">Mark attendees you'd like to reconnect with. They won't know unless it's mutual!</div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-card-icon">🚪</div>
+                    <div class="feature-card-content">
+                        <div class="feature-card-title">ReKindle Mode</div>
+                        <div class="feature-card-text">Open a 72-hour window to let your mutual connections know you're ready to reconnect.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-card-icon">🧭</div>
+                    <div class="feature-card-content">
+                        <div class="feature-card-title">Navigator Growth Missions</div>
+                        <div class="feature-card-text">Get AI-powered prompts to deepen your connections over time.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Interest selection logic
+        const interestsGrid = document.getElementById('interestsGrid');
+        const selectedInterests = new Set();
+        
+        interestsGrid.addEventListener('click', (e) => {
+            const chip = e.target.closest('.interest-chip');
+            if (!chip) return;
+            
+            const interest = chip.dataset.interest;
+            
+            if (selectedInterests.has(interest)) {
+                selectedInterests.delete(interest);
+                chip.classList.remove('selected');
+            } else {
+                if (selectedInterests.size < 5) {
+                    selectedInterests.add(interest);
+                    chip.classList.add('selected');
+                }
+            }
+        });
+        
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const password = document.getElementById('passwordInput').value;
+            const terms = document.getElementById('termsCheckbox').checked;
+            
+            // Validation
+            if (selectedInterests.size < 3) {
+                alert('Please select at least 3 interests');
+                return;
+            }
+            
+            // Simulate API call
+            console.log('API Call: POST /users/register', {
+                name,
+                email,
+                password: '***hidden***',
+                interests: Array.from(selectedInterests),
+                event_context: 'evt_001',
+                terms_accepted: terms,
+                timestamp: new Date().toISOString()
+            });
+            
+            // Simulate account creation
+            setTimeout(() => {
+                // Update success screen with user name
+                document.getElementById('userName').textContent = name.split(' ')[0];
+                
+                // Show success screen
+                document.getElementById('formView').style.display = 'none';
+                document.getElementById('successView').style.display = 'block';
+                
+                console.log('✅ Account created successfully');
+                console.log('📧 Verification email sent to:', email);
+                console.log('🎯 User profile created with interests:', Array.from(selectedInterests));
+            }, 800);
+        });
+        
+        // Log test data
+        console.log('Sign-up Context:', {
+            source: 'event_checkin',
+            event_id: 'evt_001',
+            event_name: 'GameDev Mixer 2025',
+            guest_email: 'alex@example.com'
+        });
+        console.log('API Endpoint: POST /users/register');
+    </script>
+</body>
+</html>
